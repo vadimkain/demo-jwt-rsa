@@ -13,7 +13,12 @@ import java.security.Principal;
 public class HomeController {
     @GetMapping
     public String home(Principal principal) {
-        var result = "Hello, " + principal.getName();
+        var result = "";
+        if (principal != null) {
+            result = "Hello, " + principal.getName();
+        } else {
+            result = "Hello, my friend!";
+        }
         log.info(result);
         return result;
     }
